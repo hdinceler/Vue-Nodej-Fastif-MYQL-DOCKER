@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS user_contacts (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_id BIGINT UNSIGNED NOT NULL,
+  type ENUM('email','phone') NOT NULL,
+  value VARCHAR(150) NOT NULL,
+  is_verified TINYINT(1) DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+  UNIQUE KEY uniq_contact (type, value),
+
+  CONSTRAINT fk_contact_user
+    FOREIGN KEY (user_id) REFERENCES users(id)
+    ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

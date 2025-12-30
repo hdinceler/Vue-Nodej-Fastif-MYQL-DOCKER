@@ -1,0 +1,12 @@
+.env
+node_modules
+db_data
+# Node
+node_modules/
+npm-debug.log*
+
+# Env
+.env
+
+# Docker
+db_data/
